@@ -11,19 +11,6 @@ Scorocode.Init({
     MasterKey: "659d718ff9664f6fafbdb79efc93cb34"
 });
 
-// var buildings = new Scorocode.Query("buildings");
-// buildings.find().then((finded) => {
-//   let buildings = finded.result;
-//   return buildings;
-// });
-// const infoBuildings = buildings.map((buildings) =>
-//   <li>{buildings}</li>
-// );
-
 ReactDOM.render(
     <App />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();

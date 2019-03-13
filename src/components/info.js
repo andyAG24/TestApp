@@ -18,17 +18,14 @@ class Info extends React.Component {
             <div>
                 { this.props.building1._id && 
                     <div className="app-window clearfix">
-                        {/* <div className="app-header"></div> */}
                         <div className="content">
                         <div className="building-names clearfix">
                             <ul>
                                 <li onClick={ () => {this.props.getBuildingInfoAndFloors(0)}} className="building-button">
                                 <input type="radio" name="radio" id="radio1" className="radio"/>
                                 <label id="b1" htmlFor="radio1">
-                                    
-                                {/* <div onClick={ () => {this.props.getBuildingInfoAndFloors(0)}} className="building-button">{this.props.building1.name}</div> */}
                                 </label>
-                                <div>
+                                    <div>
                                         {this.props.building1.name}
                                     </div>
                                 </li>
@@ -36,10 +33,8 @@ class Info extends React.Component {
                                 <li onClick={ () => {this.props.getBuildingInfoAndFloors(1)}} className="building-button">
                                 <input type="radio" name="radio" id="radio2" className="radio"/>
                                 <label id="b2" htmlFor="radio2">
-                                    
-                                {/* <div onClick={ () => {this.props.getBuildingInfoAndFloors(1)}} className="building-button">{this.props.building2.name}</div> */}
                                 </label>
-                                <div>
+                                    <div>
                                         {this.props.building2.name}
                                     </div>
                                 </li>

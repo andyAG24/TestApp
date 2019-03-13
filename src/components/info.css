@@ -21,7 +21,6 @@
     display: table-row;
     width: 100%;
     height: 25px;
-    /* outline: 1px solid red;  */
     border: 1px solid white; 
 }
 .content {
@@ -76,20 +75,16 @@
 
 .building-button {
     width: 100%;
-    /* height: 50px; */
 }
 
 
 
 .building-button:hover {
     cursor: pointer;
-    /* color: white; */
-    /* background-color: rgb(0, 0, 0); */
     transition: 0.5s;
 }
 
 .building {
-    /* border-left: 1px solid rgb(255, 255, 255); */
     width: 60%;
     height: 800px;
     position: relative;
@@ -98,18 +93,12 @@
 }
 
 .building-info {
-    /* border-left: 1px solid rgb(0, 0, 0); */
-    /* width: 60%; */
-    /* position: relative; */
     height: 50.31%;
-    /* display: table-cell; */
     border: 1px solid rgb(255, 255, 255);
     border-radius: 7px; 
-    /* transform: translateY(-9px); */
 }
 
 .building-info > div {
-    /* transform: translateY(6px); */
     padding-bottom: 2px;
     border-bottom: 1px solid rgb(255, 255, 255);
     border-radius: 7px;
@@ -146,12 +135,9 @@
 }
 
 .equipment-info {
-    /* border: 1px solid red; */
-    /* width: 20%; */
     position: relative;
     height: 50%;
     color: white;
-    /* display: table-cell; */
     text-align: center;
     transform: translateY(-1px);
 }
@@ -166,31 +152,16 @@
 
 .radio {
     position: absolute;
-    /* z-index: -1; */
     opacity: 0;
     margin: 10px 0 0 7px;
   }
   .radio + label {
     color: white;
-    /* width: 200px; */
     position: relative;
     width: 100%;
     float: left;
-    /* padding: 0 0 0 35px; */
     cursor: pointer;
-    /* z-index: 10; */
   }
-  /* .radio + label:before {
-    content: '';
-    position: absolute;
-    top: -3px;
-    left: 0;
-    width: 22px;
-    height: 22px;
-    border: 1px solid #CDD1DA;
-    border-radius: 50%;
-    background: #FFF;
-  } */
   .radio + label:after {
     content: '';
     position: absolute;
@@ -231,20 +202,7 @@
     opacity: 1;
     z-index: -1;
   }
-
-.radio + label > div {
-    /* z-index: 10; */
-}
-
-.building-names .radio > div {
-    /* opacity: 1; */
-    /* z-index: 1; */
-  }
-
-  .building {
-    /* border: 1px solid white; */
-    /* border-radius: 7px; */
-  }
+  
   .equipment-info {
       border: 1px solid white;
       border-radius: 7px;

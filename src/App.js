@@ -15,7 +15,6 @@ Scorocode.Init({
 
 
 class App extends Component {
-
   state = {
     building1: "",
     building2: "",
@@ -34,8 +33,6 @@ class App extends Component {
     var buildings = new Scorocode.Query("buildings");
     buildings.find().then((finded) => {
       let buildings = finded.result;
-      // console.log(buildings[0]);
-      // console.log(buildings[0].valueOf);
       this.setState({
         building1: buildings[0],
         building2: buildings[1],
@@ -67,8 +64,6 @@ class App extends Component {
       moreRoomsArray: '',
       requiredEquipment: ''
     });
-    // console.log(building._id);
-
   }
 
   uncheck(name) {
@@ -104,7 +99,6 @@ class App extends Component {
       moreRoomsArray: '',
       requiredEquipment: ''
     });
-    // console.log(floorsList);
   }
 
   getBuildingInfoAndFloors = async(indexOfBuilding) => {
@@ -115,14 +109,10 @@ class App extends Component {
   }
 
   getRooms = async(floorId) => {
-
-    // console.log(floorId);
-    // console.log(this.state.floorArray);
     this.setState({ moreRoomsArray: '' });
     let requiredFloor = this.state.floorArray.find(floor => floor.id === floorId);
     let roomsArray = requiredFloor.children;
     if (roomsArray !== undefined) {
-      // console.log(roomsArray);
       let roomsNames = roomsArray.map((roomArray) => 
       <li id={roomArray.id} className="room" onClick={ () => 
         {this.getMoreRooms(roomArray.id); this.getEquipment(roomArray.id); this.uncheck("level3");}}>
@@ -143,14 +133,11 @@ class App extends Component {
   }
 
   getMoreRooms = async(roomId) => {
-    // console.log(roomId);
     let requiredRooms = this.state.roomsArray.find(roomArray => roomArray.id === roomId);
-    // console.log(requiredRooms)
     this.setState({ roomId: roomId });
     if (requiredRooms !== undefined) {
       let roomsArray = requiredRooms.children;
       if (roomsArray !== undefined) {
-        // console.log(roomsArray);
         let roomsNames = roomsArray.map((roomArray) => 
           <li id={roomArray.id} className="room" onClick={ () => {this.getMoreRooms(roomArray.id); this.getEquipment(roomArray.id)}}>
             <input type="radio" name="level3" className="radio" id={`radio${roomsArray.indexOf(roomArray)+15}`}></input>
@@ -175,8 +162,6 @@ class App extends Component {
         requiredEquipment: ''
       });
     }
-    // this.getEquipment(this.state.roomId);
-    // console.log(this.state.equipment);
   }
 
   getAllEquipment() {
@@ -191,25 +176,17 @@ class App extends Component {
   }
 
   getEquipment = async(roomId) => {
-    console.log(roomId);
     this.setState({requiredEquipment: 'Оборудование отсутствует'});
     if ((roomId !== '') && (roomId !== undefined)) {
       let requiredEquipment = this.state.equipment.filter(equipment => equipment.room === roomId);
-      console.log(requiredEquipment);
-      // let requiredEquipmentList;
-      // requiredEquipment.forEach(requiredEquipmentList.push(<li id={requiredEquipment._id} className="equipment">{requiredEquipment.name}</li>));
       let requiredEquipmentList = requiredEquipment.map((requiredEquipment) => <li id={requiredEquipment._id} className="equipment">{requiredEquipment.name} (ID: {requiredEquipment._id})</li>);
-      console.log(requiredEquipmentList);
       this.setState({
         requiredEquipment: requiredEquipmentList
       });
     }
-    console.log(this.state.requiredEquipment);
   }
 
   render() {
-    // console.log(this.state.buildingArray);
-    
     return (
       <div>
         <div id="get-info">
