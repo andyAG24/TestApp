@@ -68,14 +68,31 @@ class App extends Component {
       requiredEquipment: ''
     });
     // console.log(building._id);
+
+  }
+
+  uncheck(name) {
+    let elements = document.getElementsByName(name);
+    for (let element of elements) {
+      element.checked = false;
+    }
   }
 
   getFloors = async(indexOfBuilding) => {
+    
     let building = this.state.buildingArray[indexOfBuilding];
     let floorsList = building.rooms;
 
     this.setState({ moreRoomsArray: '' });
-    let floorsNames = floorsList.map((floorsList) => <li id={floorsList.id} className="floor" onClick={ () => {this.getRooms(floorsList.id); ; this.getEquipment(floorsList.id)}}>{floorsList.name}</li>);
+
+    let floorsNames = floorsList.map((floorList) => 
+    <li id={floorList.id} className="floor" onClick={ () => {this.getRooms(floorList.id); this.getEquipment(floorList.id); this.uncheck("level2");}}>
+      <input type="radio" name="level1" className="radio" id={`radio${floorsList.indexOf(floorList)+5}`}></input>
+      <label htmlFor={`radio${floorsList.indexOf(floorList)+5}`}>
+        <div>{floorList.name}</div>
+      </label>
+    </li>);
+    
     let floorIds = floorsList.map((floorsList) => floorsList.id);
     let floorArray = floorsList.map((floorsList) => floorsList);
     this.setState({
@@ -91,12 +108,14 @@ class App extends Component {
   }
 
   getBuildingInfoAndFloors = async(indexOfBuilding) => {
+    this.uncheck("level1");
     this.getAllEquipment();
     this.getBuildingInfo(indexOfBuilding);
     this.getFloors(indexOfBuilding);
   }
 
   getRooms = async(floorId) => {
+
     // console.log(floorId);
     // console.log(this.state.floorArray);
     this.setState({ moreRoomsArray: '' });
@@ -104,8 +123,16 @@ class App extends Component {
     let roomsArray = requiredFloor.children;
     if (roomsArray !== undefined) {
       // console.log(roomsArray);
-      let roomsNames = roomsArray.map((roomsArray) => <li id={roomsArray.id} className="room" onClick={ () => {this.getMoreRooms(roomsArray.id); ; this.getEquipment(roomsArray.id)}}>{roomsArray.name}</li>);
-      this.setState({
+      let roomsNames = roomsArray.map((roomArray) => 
+      <li id={roomArray.id} className="room" onClick={ () => 
+        {this.getMoreRooms(roomArray.id); this.getEquipment(roomArray.id); this.uncheck("level3");}}>
+        <input type="radio" name="level2" className="radio" id={`radio${roomsArray.indexOf(roomArray)+10}`}></input>
+        <label htmlFor={`radio${roomsArray.indexOf(roomArray)+10}`}>
+          <div>{roomArray.name}</div>
+        </label>
+        </li>);
+      
+        this.setState({
         roomsNames: roomsNames,
         requiredFloor: requiredFloor,
         roomsArray: roomsArray,
@@ -124,7 +151,14 @@ class App extends Component {
       let roomsArray = requiredRooms.children;
       if (roomsArray !== undefined) {
         // console.log(roomsArray);
-        let roomsNames = roomsArray.map((roomsArray) => <li id={roomsArray.id} className="room" onClick={ () => {this.getMoreRooms(roomsArray.id); this.getEquipment(roomsArray.id)}}>{roomsArray.name}</li>);
+        let roomsNames = roomsArray.map((roomArray) => 
+          <li id={roomArray.id} className="room" onClick={ () => {this.getMoreRooms(roomArray.id); this.getEquipment(roomArray.id)}}>
+            <input type="radio" name="level3" className="radio" id={`radio${roomsArray.indexOf(roomArray)+15}`}></input>
+            <label htmlFor={`radio${roomsArray.indexOf(roomArray)+15}`}>
+              <div>{roomArray.name}</div>
+            </label>
+        </li>);
+
         this.setState({
           moreRoomsArray: roomsNames,
           requiredEquipment: ''
